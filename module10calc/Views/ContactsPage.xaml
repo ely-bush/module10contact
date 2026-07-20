@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:module6_contact.ViewModels"
+             xmlns:models="clr-namespace:module6_contact.Models"
+             x:Class="module6_contact.Views.ContactsPage"
+             x:DataType="vm:ContactsViewModel"
+             Title="Contacts"
+             BackgroundColor="#F2F2F7">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <CollectionView Grid.Row="0"
+                         ItemsSource="{Binding Contacts}"
+                         SelectionMode="Single"
+                         SelectedItem="{Binding SelectedContact}"
+                         Margin="0,8,0,0">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="40">
+                    <Label Text="No contacts yet" TextColor="#8E8E93" FontSize="16" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Contact">
+                    <Grid Padding="16,12" ColumnSpacing="14" BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" WidthRequest="48" HeightRequest="48"
+                                BackgroundColor="#007AFF" StrokeShape="RoundRectangle 24">
+                            <Label Text="{Binding Initial}" TextColor="White" FontSize="18"
+                                   FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="{Binding Name}" FontSize="16" TextColor="#1C1C1E" FontAttributes="Bold"/>
+                            <Label Text="{Binding Email}" FontSize="13" TextColor="#8E8E93"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="1"
+                Text="+ Add Another Contact"
+                Command="{Binding GoToAddContactCommand}"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="48"
+                Margin="16"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:module10contact.ViewModels"
+             x:Class="module10contact.Views.ContactDetailPage"
+             x:DataType="vm:ContactDetailViewModel"
+             Title="Contact Details"
+             BackgroundColor="#F2F2F7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Border WidthRequest="90" HeightRequest="90" BackgroundColor="#007AFF"
+                    StrokeShape="RoundRectangle 45" HorizontalOptions="Center" Margin="0,20,0,0">
+                <Label Text="{Binding Contact.Initial}" TextColor="White" FontSize="34"
+                       FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+
+            <VerticalStackLayout BackgroundColor="White" Padding="20" Spacing="16">
+
+                <!-- READ-ONLY VIEW -->
+                <VerticalStackLayout IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}" Spacing="12">
+                    <Label Text="{Binding Contact.Name}" FontSize="22" FontAttributes="Bold" TextColor="#1C1C1E" HorizontalOptions="Center"/>
+                    <BoxView HeightRequest="1" Color="#E5E5EA"/>
+                    <Label Text="{Binding Contact.Email, StringFormat='✉  {0}'}" FontSize="15" TextColor="#1C1C1E"/>
+                    <Label Text="{Binding Contact.Phone, StringFormat='📞  {0}'}" FontSize="15" TextColor="#1C1C1E"/>
+                    <Label Text="{Binding Contact.Description, StringFormat='💬  {0}'}" FontSize="15" TextColor="#1C1C1E" LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+
+                <!-- EDIT VIEW -->
+                <VerticalStackLayout IsVisible="{Binding IsEditing}" Spacing="12">
+                    <Label Text="Name" FontSize="13" TextColor="#8E8E93"/>
+                    <Entry Text="{Binding Contact.Name}" FontSize="16"/>
+                    <Label Text="Email" FontSize="13" TextColor="#8E8E93"/>
+                    <Entry Text="{Binding Contact.Email}" Keyboard="Email" FontSize="16"/>
+                    <Label Text="Phone" FontSize="13" TextColor="#8E8E93"/>
+                    <Entry Text="{Binding Contact.Phone}" Keyboard="Telephone" FontSize="16"/>
+                    <Label Text="Description" FontSize="13" TextColor="#8E8E93"/>
+                    <Editor Text="{Binding Contact.Description}" HeightRequest="90" FontSize="16"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+            <!-- Edit / Save toggle (bonus) -->
+            <Button Text="Edit"
+                    Command="{Binding EditCommand}"
+                    IsVisible="{Binding IsEditing, Converter={StaticResource InvertedBoolConverter}}"
+                    BackgroundColor="#FFFFFF" TextColor="#007AFF" BorderColor="#007AFF" BorderWidth="1"
+                    CornerRadius="12" HeightRequest="48"/>
+
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}"
+                    IsVisible="{Binding IsEditing}"
+                    BackgroundColor="#007AFF" TextColor="White"
+                    CornerRadius="12" HeightRequest="48"/>
+
+            <Button Text="← Back to Contacts"
+                    Command="{Binding BackCommand}"
+                    BackgroundColor="#8E8E93" TextColor="White"
+                    CornerRadius="12" HeightRequest="48"
+                    Margin="0,0,0,24"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

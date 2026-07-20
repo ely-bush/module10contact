@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:module6_contact.ViewModels"
+             x:Class="module6_contact.Views.AddContactPage"
+             x:DataType="vm:AddContactViewModel"
+             Title="New Contact"
+             BackgroundColor="#F2F2F7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+
+            <Label Text="Add Contact" FontSize="26" FontAttributes="Bold" TextColor="#1C1C1E" Margin="0,10,0,10"/>
+
+            <VerticalStackLayout BackgroundColor="White" Padding="20" Spacing="16" >
+                <VerticalStackLayout.Resources>
+                    <Style TargetType="Entry">
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="TextColor" Value="#1C1C1E"/>
+                    </Style>
+                </VerticalStackLayout.Resources>
+
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Name" FontSize="13" TextColor="#8E8E93"/>
+                    <Entry Placeholder="Full name" Text="{Binding Name}"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" Color="#E5E5EA"/>
+
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Email" FontSize="13" TextColor="#8E8E93"/>
+                    <Entry Placeholder="email@example.com" Text="{Binding Email}" Keyboard="Email"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" Color="#E5E5EA"/>
+
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Phone Number" FontSize="13" TextColor="#8E8E93"/>
+                    <Entry Placeholder="+1 (555) 123-4567" Text="{Binding Phone}" Keyboard="Telephone"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" Color="#E5E5EA"/>
+
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Description" FontSize="13" TextColor="#8E8E93"/>
+                    <Editor Placeholder="Notes about this contact" Text="{Binding Description}" HeightRequest="90" FontSize="16" TextColor="#1C1C1E"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <Label Text="{Binding ErrorMessage}" TextColor="#FF3B30" FontSize="13"/>
+
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="12"
+                    HeightRequest="48"
+                    Margin="0,10,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
