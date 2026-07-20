@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using module10contact.Models;
-using Conact = module10contact.Models.Contact;
+using Contact = module10contact.Models.Contact;
 
 namespace module10contact.ViewModels
 {
