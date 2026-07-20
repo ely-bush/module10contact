@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace module10calc
+namespace module10contact
 {
     [Application]
     public class MainApplication : MauiApplication

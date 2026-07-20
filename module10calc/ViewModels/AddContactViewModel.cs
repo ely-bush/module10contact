@@ -2,15 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using module10contact.Models;
 using module10contact.Views;
+using Contact = module10contact.Models.Contact;
 
-namespace module6_contact.ViewModels
+namespace module10contact.ViewModels
 {
     public partial class AddContactViewModel : ObservableObject
     {
         private readonly ContactsViewModel _contactsViewModel;
 
-        // Injected because it's registered as a Singleton — this is the SAME
-        // instance ContactsPage binds to, so adding here shows up there instantly.
         public AddContactViewModel(ContactsViewModel contactsViewModel)
         {
             _contactsViewModel = contactsViewModel;
@@ -50,7 +49,6 @@ namespace module6_contact.ViewModels
 
             _contactsViewModel.Contacts.Add(contact);
 
-            // Reset the form for the next contact
             Name = Email = Phone = Description = ErrorMessage = string.Empty;
 
             await Shell.Current.GoToAsync(nameof(ContactsPage));

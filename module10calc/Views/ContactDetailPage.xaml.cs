@@ -1,9 +1,13 @@
-namespace module10calc.Views;
+using module10contact.ViewModels;
 
-public partial class ContactDetailPage : ContentPage
+namespace module10contact.Views
 {
-	public ContactDetailPage()
-	{
-		InitializeComponent();
-	}
+    public partial class ContactDetailPage : ContentPage
+    {
+        public ContactDetailPage(ContactDetailViewModel vm)
+        {
+            InitializeComponent();
+            BindingContext = vm;
+        }
+    }
 }

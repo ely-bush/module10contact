@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using module10contact.Models;
 using module10contact.Views;
+using Contact = module10contact.Models.Contact;
 
 namespace module10contact.ViewModels
 {
@@ -29,7 +29,7 @@ namespace module10contact.ViewModels
         [RelayCommand]
         private async Task GoToAddContact()
         {
-            await.Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

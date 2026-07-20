@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace module10calc
+namespace module10contact
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

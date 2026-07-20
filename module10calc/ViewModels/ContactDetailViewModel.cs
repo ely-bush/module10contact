@@ -1,12 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using module10contact.Models;
+using Conact = module10contact.Models.Contact;
 
-namespace module6_contact.ViewModels
+namespace module10contact.ViewModels
 {
-    // IQueryAttributable lets this ViewModel receive the selected Contact
-    // object passed through Shell.GoToAsync's parameter dictionary.
-    public partial class ContactDetailViewModel : ObservableObject, IQueryAttributable
+        public partial class ContactDetailViewModel : ObservableObject, IQueryAttributable
     {
         [ObservableProperty]
         private Contact contact = new();
@@ -28,11 +27,6 @@ namespace module6_contact.ViewModels
         [RelayCommand]
         private void Save()
         {
-            // The Entry fields on this page are two-way bound directly to
-            // Contact.Name/Email/Phone/Description. Since Contact is the exact
-            // same object reference stored in ContactsViewModel.Contacts, any
-            // edits already live-update the list on ContactsPage automatically
-            // (Contact implements ObservableObject, which raises PropertyChanged).
             IsEditing = false;
         }
 

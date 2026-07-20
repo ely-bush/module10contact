@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace module10calc
+namespace module10contact
 {
     public class Program
     {

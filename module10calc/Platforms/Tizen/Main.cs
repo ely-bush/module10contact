@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace module10calc
+namespace module10contact
 {
     internal class Program : MauiApplication
     {
